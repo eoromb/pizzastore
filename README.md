@@ -12,20 +12,20 @@
 
  ## API
 
-POST api/v1/orders - creates order
-        body: {items:[{id: integer, quantity: integer}], customerId: integer, address: text}
-GET api/v1/orders/:id - gets order
-GET api/v1/orders - get list of orders
-DELETE api/v1/orders/:id - deletes order
-PATCH api/v1/orders/:id
-        body: {items:[{id: integer, quantity: integer}]}
+`POST api/v1/orders` - creates order <br/>
+        `body: {items:[{id: integer, quantity: integer}]`, customerId: integer, address: text} <br/>
+`GET api/v1/orders/:id` - gets order <br/>
+`GET api/v1/orders` - get list of orders <br/>
+`DELETE api/v1/orders/:id` - deletes order <br/>
+`PATCH api/v1/orders/:id` <br/>
+        `body: {items:[{id: integer, quantity: integer}]}` <br/>
 
-POST api/v1/orders/:id/preparation - begin order preparation
-GET api/v1/orders/:id/preparation - get order preparation details
-PATCH api/v1/orders/:id/preparation - update order preparation
-        body: {completed: true}
+`POST api/v1/orders/:id/preparation` - begin order preparation <br/>
+`GET api/v1/orders/:id/preparation` - get order preparation details <br/>
+`PATCH api/v1/orders/:id/preparation` - update order preparation <br/>
+        `body: {completed: true}` <br/>
 
-POST api/v1/orders/:id/delivery - begin order delivery
-GET api/v1/orders/:id/delivery - get order delivery details
-PATCH api/v1/orders/:id/delivery - update order delivery
-        body: {completed: true}
+`POST api/v1/orders/:id/delivery` - begin order delivery <br/>
+`GET api/v1/orders/:id/delivery` - get order delivery details <br/>
+`PATCH api/v1/orders/:id/delivery` - update order delivery <br/>
+        `body: {completed: true}` <br/>
