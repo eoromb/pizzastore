@@ -3,7 +3,7 @@
         "database": {
             "user": "postgres",
             "password": "12345",
-            "database": "postgres",
+            "database": "pizza",
             "host": "localhost",
             "port": "5432",
             "poolSize": 10,

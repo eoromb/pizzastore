@@ -1,0 +1,27 @@
+version: '3.6'
+
+services:
+  pizza_db:
+    image: postgres:11-alpine
+    container_name: pizza_db_container
+    restart: always
+    ports:
+      - "5432:5432"
+      - "3000:3000"
+    environment:
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_USER: postgres
+      POSTGRES_DB: pizza
+      POSTGRES_INITDB_ARGS: "-E UTF8"
+    volumes:
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/1.setup.sql
+      - ./database/data-pizza.sql:/docker-entrypoint-initdb.d/2.setup.sql
+      - ./database/data-customer.sql:/docker-entrypoint-initdb.d/3.setup.sql
+  pizza_api:
+    build: .
+    container_name: pizza_api_container
+    depends_on:
+      - pizza_db
+    network_mode: service:pizza_db
+    command: npm run start
+

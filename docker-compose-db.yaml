@@ -1,0 +1,14 @@
+version: '3.6'
+
+services:
+  pizza_db:
+    image: postgres:11-alpine
+    container_name: pizza_db_container
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_USER: postgres
+      POSTGRES_DB: test
+      POSTGRES_INITDB_ARGS: "-E UTF8"

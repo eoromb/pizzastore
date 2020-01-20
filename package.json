@@ -1,16 +1,17 @@
 {
   "name": "pizzastore",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple API for Pizza store",
   "main": "server.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha --config test/integration/.mocharc.json --no-opts --exit test/integration/**/*.test.js"
+    "test": "node_modules/.bin/mocha --config test/integration/.mocharc.json --no-opts --exit test/integration/**/*.test.js",
+    "start": "node server.js"
   },
   "engines": {
     "node": ">=12.4.1",
     "npm": ">=6.13.4"
   },
-  "author": "",
+  "author": "Evgenii Romb",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",
