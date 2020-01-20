@@ -1,3 +1,7 @@
+/**
+ * Validates request body
+ * @param {*} schema Joi schema
+ */
 const validator = schema => (req, res, next) => {
     const {error} = schema.validate(req.body);
     const valid = error == null;

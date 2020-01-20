@@ -2,6 +2,9 @@ const AppError = require('./errors/app-error');
 const HttpError = require('./errors/http-error');
 const Errors = require('./errors/errors');
 
+/**
+ * Error mapper. Maps application level error to network level
+ */
 class ErrorMapper {
     mapError (appError) {
         if (appError instanceof AppError) {

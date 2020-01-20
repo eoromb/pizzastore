@@ -1,4 +1,7 @@
 
+/**
+ * Unit of work allo to make several operation in one transaction
+ */
 class UnitOfWork {
     constructor (client) {
         if (client == null) {

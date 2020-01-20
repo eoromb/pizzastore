@@ -1,3 +1,6 @@
+/**
+ * Application level error
+ */
 class AppError extends Error {
     constructor (code) {
         super();

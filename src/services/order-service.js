@@ -3,6 +3,9 @@ const OrderRepository = require('../persistence/repositories/order-repository');
 const CustomerRepository = require('../persistence/repositories/customer-repository');
 const PizzaRepository = require('../persistence/repositories/pizza-repository');
 const Errors = require('../common/errors/errors');
+/**
+ * Order application service
+ */
 class OrderService {
     constructor (unitOfWorkFactory) {
         this.unitOfWorkFactory = unitOfWorkFactory;
@@ -59,9 +62,13 @@ class OrderService {
             }
         }
     }
+    /**
+     * Updates order items
+     */
     async updateOrder ({id, items}) {
         let uow = null;
         try {
+            // begin transaction with repeatable read isolation to take into account order status
             uow = await this.unitOfWorkFactory.createUnitOfWork({repeatableRead: true});
             const orderRepository = new OrderRepository(uow);
             const order = await orderRepository.getOrder({id});

@@ -3,6 +3,9 @@ const defaultError = {
     code: 500,
     message: 'Internal server error'
 };
+/**
+ * Process application level errors: maps to transport level and logs
+ */
 module.exports = ({logService, errorMapper}) => (error, req, res, next) => {
     if (error) {
         const mappedError = errorMapper.mapError(error);

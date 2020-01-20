@@ -1,4 +1,7 @@
 const OrderDataMapper = require('../models/order-data-mapper');
+/**
+ * Order controller
+ */
 class OrderController {
     constructor (orderService) {
         this.orderService = orderService;

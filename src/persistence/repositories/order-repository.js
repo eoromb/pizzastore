@@ -1,5 +1,8 @@
 const Order = require('../../models/order');
 const schema = 'PizzaStore';
+/**
+ * Orders repository. Provides persistence operations for order
+ */
 class OrderRepository {
     constructor (unitOfWork) {
         this.unitOfWork = unitOfWork;
