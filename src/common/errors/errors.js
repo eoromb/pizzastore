@@ -1,7 +1,9 @@
 const codes = {
     orders: {
         unableToUpdate: 1001,
-        notExist: 1002
+        notExist: 1002,
+        unableToCreateNoCustomer: 1003,
+        unableToCreateNoItem: 1004
     },
     preparations: {
         unableToBegin: 1500,
@@ -19,6 +21,14 @@ const codes = {
 const errors = {
     [codes.orders.unableToUpdate]: {
         message: 'Unable to update order. Order is not in updatable state.',
+        httpCode: 400
+    },
+    [codes.orders.unableToCreateNoCustomer]: {
+        message: 'Unable to create order. Customer does not exist.',
+        httpCode: 400
+    },
+    [codes.orders.unableToCreateNoItem]: {
+        message: 'Unable to create order. Specified pizza does not exist.',
         httpCode: 400
     },
     [codes.orders.notExist]: {

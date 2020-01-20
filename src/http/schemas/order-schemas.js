@@ -13,4 +13,11 @@ OrderSchemas.create = Joi.object().keys({
 OrderSchemas.update = Joi.object().keys({
     items: Joi.array().items(OrderSchemas.orderItem)
 });
+OrderSchemas.order = Joi.object().keys({
+    id: Joi.number().required(),
+    items: Joi.array().items(OrderSchemas.orderItem),
+    customerId: Joi.number().required(),
+    address: Joi.string().required(),
+    status: Joi.string().required()
+});
 module.exports = OrderSchemas;

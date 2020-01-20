@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const common = require('./src/common')();
 const persistence = require('./src/persistence')({common});
 const services = require('./src/services')({persistence});
-const controllers = require('./src/http/controllers')({services});
+const controllers = require('./src/http/controllers')({services, persistence});
 const {configService, logService} = common;
 const errorHandler = require('./src/http/middlewares/error-handler');
 const setupRoutes = require('./src/http/routes');
@@ -38,4 +38,4 @@ const server = app.listen(port, function () {
     logService.info(`${Date(Date.now())}: Node server started on ${host}:${port} ...`);
 });
 
-module.exports = app;
+module.exports = server;

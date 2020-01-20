@@ -16,7 +16,7 @@ class OrderRepository {
         const query = `SELECT d.id as deliveryId, d.completed as deliveryCompleted, 
             p.id as preparationId, p.completed as preparationCompleted,
              orderagg.* FROM
-            (SELECT o.*, json_agg(json_build_object('pizzaId', oi.pizzaId,'quantity', oi.quantity)) as items
+            (SELECT o.*, json_agg(json_build_object('id', oi.pizzaId,'quantity', oi.quantity)) as items
             FROM "${schema}"."Order" as o
             LEFT JOIN "${schema}"."OrderItem" as oi ON o.id=oi.orderId 
             WHERE o.id=$1

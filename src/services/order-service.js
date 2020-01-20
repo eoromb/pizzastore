@@ -1,5 +1,7 @@
 const AppError = require('../common/errors/app-error');
 const OrderRepository = require('../persistence/repositories/order-repository');
+const CustomerRepository = require('../persistence/repositories/customer-repository');
+const PizzaRepository = require('../persistence/repositories/pizza-repository');
 const Errors = require('../common/errors/errors');
 class OrderService {
     constructor (unitOfWorkFactory) {
@@ -10,6 +12,16 @@ class OrderService {
         try {
             uow = await this.unitOfWorkFactory.createUnitOfWork();
             const orderRepository = new OrderRepository(uow);
+            const customerRepository = new CustomerRepository(uow);
+            const pizzaRepository = new PizzaRepository(uow);
+            const customer = await customerRepository.getCustomer({id: customerId});
+            if (customer == null) {
+                throw new AppError(Errors.codes.orders.unableToCreateNoCustomer);
+            }
+            const pizzas = await pizzaRepository.getPizzaByIds({ids: items.map(i => i.id)});
+            if (pizzas.length !== items.length) {
+                throw new AppError(Errors.codes.orders.unableToCreateNoItem);
+            }
             const order = await orderRepository.createOrder({items, customerId, address});
 
             await uow.commit();

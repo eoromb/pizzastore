@@ -13,5 +13,21 @@
         "server": {
             "port": 3000
         }
+    },
+    "test": {
+        "database": {
+            "user": "postgres",
+            "password": "12345",
+            "database": "test",
+            "host": "localhost",
+            "port": "5432",
+            "poolSize": 10,
+            "idleTimeoutMillis": 10000,
+            "connectionTimeoutMillis": 30000
+        },
+        "testSchema": "/database/test-schema.sql",
+        "server": {
+            "port": 3000
+        }
     }
 }

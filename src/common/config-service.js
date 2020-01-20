@@ -13,5 +13,8 @@ class ConfigService {
         const config = this.getServerConfig();
         return process.env.PORT || config.port || 3000;
     }
+    getDatabaseSchema () {
+        return this.config.testSchema;
+    }
 }
 module.exports = ConfigService;
